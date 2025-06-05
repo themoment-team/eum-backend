@@ -33,7 +33,6 @@ public class LostItem_controller {
         }
 
         String student_id = jwtUtil.getStudentId(token);
-        System.out.println(student_id);
 
         User_Entity user = user_repository.findById(Long.valueOf(student_id))
                 .orElseThrow(() -> new IllegalArgumentException("없는 학번입니다."));
