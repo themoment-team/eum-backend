@@ -1,3 +1,5 @@
+// 테스트를 위한 토큰 생성용
+
 package com.study.backendeum.controller;
 
 import com.auth0.jwt.JWT;
@@ -5,6 +7,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.study.backendeum.entity.User_Entity;
 import com.study.backendeum.repository.User_Repository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,12 +19,16 @@ public class JwtTokenGenerator {
     @Autowired
     private User_Repository user_repository;
 
+    @Value("${jwt.secret}")
+    String SECRET_KEY;
+
     @PostMapping("/login")
     public String login(@RequestBody User_Entity user) {
+
         Date now = new Date();
         user_repository.save(user);
 
-        String SECRET_KEY = "my-super-secret-key-for-jwt-which-is-long-enough";
+
         return JWT.create()
                 .withIssuer("myServer")           // 발급자
                 .withSubject(String.valueOf(user.getStudent_id()))           // 사용자 식별자 (예: 사용자명)

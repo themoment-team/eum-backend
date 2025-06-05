@@ -9,11 +9,15 @@ import lombok.Data;
 public class LostItem_Entity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int board_id;
+    @Column(name = "board_id")
+    private Long boardId;
 
     @ManyToOne
     @JoinColumn(name = "student_id")
     private User_Entity user;
+
+    @Column(length = 20, nullable = false)
+    private String student_name;
 
     @Column(length = 40, nullable = false)
     private String lostitem_name;

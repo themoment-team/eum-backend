@@ -2,14 +2,15 @@ package com.study.backendeum.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
 
 @Component
 public class JwtUtil {
-
-    private final String SECRET_KEY = "my-super-secret-key-for-jwt-which-is-long-enough";
+    @Value("${jwt.secret}")
+    private String SECRET_KEY;
 
     private Key getSigningKey() {
         return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());

@@ -9,7 +9,8 @@ import lombok.Data;
 public class GetItem_Entity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int board_id;
+    @Column(name = "board_id")
+    private Long boardId;
 
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = false)
@@ -24,7 +25,7 @@ public class GetItem_Entity {
     @Column(length = 287)
     private String GetItem_detail;
 
-    @Column(nullable = false)
     @Lob
+    @Column(columnDefinition = "MEDIUMTEXT", nullable = false)
     private String GetItem_url_image;
 }

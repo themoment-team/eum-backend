@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/getitem")
 public class GetItem_controller {
@@ -25,7 +25,7 @@ public class GetItem_controller {
     private GetItem_Repository getItem_repository;
 
     @PostMapping("/post")
-    public void Post(@RequestBody GetItemDTO GetItemdto) {
+    public void post(@RequestBody GetItemDTO GetItemdto) {
         String token = GetItemdto.getToken();
 
         if (!jwtUtil.validateToken(token)) {
@@ -35,7 +35,7 @@ public class GetItem_controller {
         String student_id = jwtUtil.getStudentId(token);
         System.out.println(student_id);
 
-        User_Entity user = user_repository.findById(Integer.valueOf(student_id))
+        User_Entity user = user_repository.findById(Long.valueOf(student_id))
                 .orElseThrow(() -> new IllegalArgumentException("없는 학번입니다."));
 //        System.out.println(student_id);
 //        System.out.println(user.getStudent_name());
@@ -53,7 +53,7 @@ public class GetItem_controller {
 
     @GetMapping("/view/{boardid}")
     public ResponseEntity<?> View(@PathVariable Integer boardid) {
-        GetItem_Entity board = getItem_repository.findById(boardid)
+        GetItem_Entity board = getItem_repository.findById(Long.valueOf(boardid))
                 .orElseThrow(() -> new IllegalArgumentException("게시글이 존재하지 않습니다."));
         GetItemResponseDTO response = new GetItemResponseDTO();
         response.setStudent_id(String.valueOf(board.getUser().getStudent_id()));
