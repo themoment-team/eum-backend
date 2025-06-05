@@ -11,15 +11,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "https://gsm-eum.p-e.kr")
 @RestController
 public class MainPageController {
     @Autowired
@@ -27,13 +24,13 @@ public class MainPageController {
     @Autowired
     LostItem_Repository lostItem_repository;
 
-    @PostMapping("/list")
-    public ResponseEntity<?> MainPage(@RequestBody MainPageDTO mainPageDTO) {
-        int getitem_page = Integer.parseInt(mainPageDTO.getGetitem_page());
-        int lostitem_page = Integer.parseInt(mainPageDTO.getLostitem_page());
+    @GetMapping("/main")
+    public ResponseEntity<?> MainPage() {
+//        int getitem_page = Integer.parseInt(mainPageDTO.getGetitem_page());
+//        int lostitem_page = Integer.parseInt(mainPageDTO.getLostitem_page());
 
-        Pageable getitem_pageable = PageRequest.of(getitem_page, 5, Sort.by("boardId").descending());
-        Pageable lostitem_pageable = PageRequest.of(lostitem_page, 5, Sort.by("boardId").descending());
+        Pageable getitem_pageable = PageRequest.of(0, 50, Sort.by("boardId").descending());
+        Pageable lostitem_pageable = PageRequest.of(0, 50, Sort.by("boardId").descending());
         Page<GetItem_Entity> getItems = getItem_repository.findAll(getitem_pageable);
         Page<LostItem_Entity> lostItems = lostItem_repository.findAll(lostitem_pageable);
 
