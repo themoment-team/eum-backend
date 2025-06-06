@@ -1,6 +1,5 @@
 package com.themoment.board.controller;
 
-import com.study.backendeum.dto.MainPage.*;
 import com.themoment.board.dto.MainPage.CombineItemListDTO;
 import com.themoment.board.dto.MainPage.GetItemListDTO;
 import com.themoment.board.dto.MainPage.ItemListDTO;
