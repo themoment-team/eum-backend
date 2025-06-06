@@ -1,7 +1,5 @@
-// 테스트를 위한 토큰 생성용
+package com.study.backendeum.controller;
 
-//package com.study.backendeum.controller;
-//
 //import com.auth0.jwt.JWT;
 //import com.auth0.jwt.algorithms.Algorithm;
 //import com.study.backendeum.entity.User_Entity;
