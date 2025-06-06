@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:63342")
+@CrossOrigin(origins = "https://gsm-eum.p-e.kr")
 @Controller
-@RequestMapping("/")
 @RequiredArgsConstructor
 public class MemberController {
 
