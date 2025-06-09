@@ -1,12 +1,12 @@
-package com.themoment.login.member.controller;
+package com.example.eum2.member.controller;
 
-import com.themoment.login.member.DTO.LoginResponseDTO;
-import com.themoment.login.member.DTO.UserLoginDTO;
-import com.themoment.login.member.DTO.UserSignupDTO;
-import com.themoment.login.member.JWT.JWTUtil;
-import com.themoment.login.member.entity.UserEntity;
-import com.themoment.login.member.repository.UserRepository;
-import com.themoment.login.member.service.MemberService;
+import com.example.eum2.member.DTO.LoginResponseDTO;
+import com.example.eum2.member.DTO.UserLoginDTO;
+import com.example.eum2.member.DTO.UserSignupDTO;
+import com.example.eum2.member.JWT.JWTUtil;
+import com.example.eum2.member.entity.UserEntity;
+import com.example.eum2.member.repository.UserRepository;
+import com.example.eum2.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +17,9 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "https://gsm-eum.p-e.kr")
 @Controller
+@CrossOrigin(origins = "http://localhost:63342")
+@RestController
+@RequestMapping("/")
 @RequiredArgsConstructor
 public class MemberController {
 
@@ -24,22 +27,6 @@ public class MemberController {
     private final MemberService memberService;
     private final JWTUtil jwtUtil;
 
-    // 회원가입 폼 페이지
-    @GetMapping("/save")
-    public String saveForm() {
-        return "save"; // templates/save.html
-    }
-
-    // HTML Form 회원가입 처리
-    @PostMapping("/save")
-    public String save(@ModelAttribute UserSignupDTO dto) {
-        UserEntity user = new UserEntity();
-        user.setStudent_name(dto.getStudent_name());
-        user.setEmail(dto.getEmail().toLowerCase());  // 이메일 소문자 저장 필수
-        user.setPassword(dto.getPassword());
-        userRepository.save(user);
-        return "index"; // templates/index.html
-    }
 
     // API 회원가입 (JSON 요청)
     @PostMapping("/signup")
