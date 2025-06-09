@@ -1,12 +1,12 @@
 package com.themoment.login.member.controller;
 
-import com.example.eum2.member.DTO.LoginResponseDTO;
-import com.example.eum2.member.DTO.UserLoginDTO;
-import com.example.eum2.member.DTO.UserSignupDTO;
-import com.example.eum2.member.JWT.JWTUtil;
-import com.example.eum2.member.entity.UserEntity;
-import com.example.eum2.member.repository.UserRepository;
-import com.example.eum2.member.service.MemberService;
+import com.themoment.login.member.DTO.LoginResponseDTO;
+import com.themoment.login.member.DTO.UserLoginDTO;
+import com.themoment.login.member.DTO.UserSignupDTO;
+import com.themoment.login.member.JWT.JWTUtil;
+import com.themoment.login.member.entity.UserEntity;
+import com.themoment.login.member.repository.UserRepository;
+import com.themoment.login.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
