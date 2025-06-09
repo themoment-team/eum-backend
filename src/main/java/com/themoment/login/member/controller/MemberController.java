@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+@RestController
 @CrossOrigin(origins = "https://gsm-eum.p-e.kr")
-@Controller
 @RequiredArgsConstructor
 public class MemberController {
 
@@ -24,22 +24,6 @@ public class MemberController {
     private final MemberService memberService;
     private final JWTUtil jwtUtil;
 
-    // 회원가입 폼 페이지
-    @GetMapping("/save")
-    public String saveForm() {
-        return "save"; // templates/save.html
-    }
-
-    // HTML Form 회원가입 처리
-    @PostMapping("/save")
-    public String save(@ModelAttribute UserSignupDTO dto) {
-        UserEntity user = new UserEntity();
-        user.setStudent_name(dto.getStudent_name());
-        user.setEmail(dto.getEmail().toLowerCase());  // 이메일 소문자 저장 필수
-        user.setPassword(dto.getPassword());
-        userRepository.save(user);
-        return "index"; // templates/index.html
-    }
 
     // API 회원가입 (JSON 요청)
     @PostMapping("/signup")
