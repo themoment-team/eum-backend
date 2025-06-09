@@ -1,4 +1,4 @@
-package com.example.eum2.member.controller;
+package com.themoment.login.member.controller;
 
 import com.example.eum2.member.DTO.LoginResponseDTO;
 import com.example.eum2.member.DTO.UserLoginDTO;
@@ -15,11 +15,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@CrossOrigin(origins = "https://gsm-eum.p-e.kr")
-@Controller
-@CrossOrigin(origins = "http://localhost:63342")
 @RestController
-@RequestMapping("/")
+@CrossOrigin(origins = "https://gsm-eum.p-e.kr")
 @RequiredArgsConstructor
 public class MemberController {
 
