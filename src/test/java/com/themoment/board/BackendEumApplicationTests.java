@@ -1,4 +1,4 @@
-package com.study.backendeum;
+package com.themoment.board;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.example.eum2;
+package com.themoment.login;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
