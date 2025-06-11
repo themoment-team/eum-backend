@@ -18,8 +18,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: grant (chmod)
-        run: chmod +x ./gradlew
+      - name: Build without tests
+        run: chmod +x ./gradlew && ./gradlew build -x test
 
       - name: Build with Gradle
         run: ./gradlew build
