@@ -23,6 +23,11 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew build
+        env:
+          RDSENDPOINT: ${{ secrets.RDSENDPOINT }}
+          RDSNAME: ${{ secrets.RDSNAME }}
+          RDSPASSWORD: ${{ secrets.RDSPASSWORD }}
+          SECRETKEY: ${{ secrets.SECRETKEY }}
 
       - name: Copy jar to EC2
         uses: appleboy/scp-action@master
