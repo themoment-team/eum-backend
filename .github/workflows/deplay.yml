@@ -19,10 +19,10 @@ jobs:
           distribution: 'temurin'
 
       - name: Build without tests
-        run: chmod +x ./gradlew && ./gradlew build -x test
+        run: chmod +x ./gradlew
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew clean build -x test
         env:
           RDSENDPOINT: ${{ secrets.RDSENDPOINT }}
           RDSNAME: ${{ secrets.RDSNAME }}
