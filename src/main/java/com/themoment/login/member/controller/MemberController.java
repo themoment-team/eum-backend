@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "https://gsm-eum.p-e.kr")
 @RequiredArgsConstructor
 public class MemberController {
 

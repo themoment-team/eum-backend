@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "https://gsm-eum.p-e.kr")
 @RestController
 public class MainPageController {
     @Autowired

@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "https://gsm-eum.p-e.kr")
 @RestController
 @RequestMapping("/lostitem")
 public class LostItem_controller {
