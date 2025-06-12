@@ -46,4 +46,5 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             pkill -f "java -jar" || true
-            nohup java -jar /home/ubuntu/app/backend-EUM-0.0.1-SNAPSHOT.jar > /home/ubuntu/app/log.txt 2>&1 &
+            JAR_FILE=$(ls /home/ubuntu/app/*.jar | head -n 1)
+            nohup java -jar $JAR_FILE > /home/ubuntu/app/log.txt 2>&1 &
