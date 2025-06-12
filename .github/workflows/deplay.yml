@@ -46,4 +46,4 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             pkill -f "java -jar" || true
-            nohup java -jar /home/ubuntu/app/*.jar > /home/ubuntu/app/log.txt 2>&1 &
+            nohup java -jar /home/ubuntu/app/$JAR_FILE > /home/ubuntu/app/log.txt 2>&1 &
