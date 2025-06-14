@@ -9,7 +9,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://eum-project.vercel.app") // 프론트 주소들
+                .allowedOrigins("https://gsm-eum.p-e.kr") // 프론트 주소들
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*");
                 // .allowCredentials(true);
