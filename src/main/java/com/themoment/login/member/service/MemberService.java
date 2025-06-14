@@ -20,12 +20,11 @@ public class MemberService {
         }
 
         UserEntity user = new UserEntity();
+        user.setStudent_id(dto.getStudent_id());
         user.setStudent_name(dto.getStudent_name());
         user.setEmail(dto.getEmail());
         user.setPassword(dto.getPassword());
 
-        System.out.println("👉 저장 전: " + user);
         userRepository.save(user);
-        System.out.println("✅ 저장 완료");
     }
 }

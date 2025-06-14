@@ -49,7 +49,7 @@ public class MemberController {
 
             if (user.getPassword().equals(dto.getPassword())) {
                 String token = jwtUtil.generateToken(user); // JWT 발급
-                LoginResponseDTO responseDTO = new LoginResponseDTO(token);
+                LoginResponseDTO responseDTO = new LoginResponseDTO(token, user.getStudent_name());
                 return ResponseEntity.ok().body(responseDTO);
             } else {
                 return ResponseEntity.status(401).body("비밀번호가 일치하지 않습니다.");
