@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/getitem")
 public class GetItem_controller {
@@ -34,17 +36,14 @@ public class GetItem_controller {
 
         User_Entity user = user_repository.findById(Long.valueOf(student_id))
                 .orElseThrow(() -> new IllegalArgumentException("없는 학번입니다."));
-//        System.out.println(student_id);
-//        System.out.println(user.getStudent_name());
-//        System.out.println(GetItemdto.getGetitem_name());
-//        System.out.println(GetItemdto.getGetitem_detail());
-//        System.out.println(GetItemdto.getGetitem_url_image());
+
         GetItem_Entity getItem_entity = new GetItem_Entity();
         getItem_entity.setUser(user);
         getItem_entity.setStudent_name(user.getStudent_name());
         getItem_entity.setGetItem_name(GetItemdto.getGetitem_name());
         getItem_entity.setGetItem_detail(GetItemdto.getGetitem_detail());
-        getItem_entity.setGetItem_url_image(GetItemdto.getGetitem_url_image());
+        Optional.ofNullable(GetItemdto.getGetitem_url_image())
+                .orElseThrow(() -> new IllegalArgumentException("이미지 URL은 필수입니다."));
         getItem_repository.save(getItem_entity);
     }
 

@@ -1,7 +1,7 @@
 package com.themoment.board.controller;
 
-import com.themoment.board.dto.GetItemResponseDTO;
 import com.themoment.board.dto.LostItemDTO;
+import com.themoment.board.dto.LostItemResponseDTO;
 import com.themoment.board.entity.LostItem_Entity;
 import com.themoment.board.entity.User_Entity;
 import com.themoment.board.repository.LostItem_Repository;
@@ -34,11 +34,7 @@ public class LostItem_controller {
 
         User_Entity user = user_repository.findById(Long.valueOf(student_id))
                 .orElseThrow(() -> new IllegalArgumentException("없는 학번입니다."));
-//        System.out.println(student_id);
-//        System.out.println(user.getStudent_name());
-//        System.out.println(GetItemdto.getGetitem_name());
-//        System.out.println(GetItemdto.getGetitem_detail());
-//        System.out.println(GetItemdto.getGetitem_url_image());
+
         LostItem_Entity lostItem_entity = new LostItem_Entity();
         lostItem_entity.setUser(user);
         lostItem_entity.setStudent_name(user.getStudent_name());
@@ -52,12 +48,12 @@ public class LostItem_controller {
     public ResponseEntity<?> View(@PathVariable Integer boardid) {
         LostItem_Entity board = lostItem_repository.findById(Long.valueOf(boardid))
                 .orElseThrow(() -> new IllegalArgumentException("게시글이 존재하지 않습니다."));
-        GetItemResponseDTO response = new GetItemResponseDTO();
+        LostItemResponseDTO response = new LostItemResponseDTO();
         response.setStudent_id(String.valueOf(board.getUser().getStudent_id()));
         response.setStudent_name(board.getStudent_name());
-        response.setGetitem_name(board.getLostitem_name());
-        response.setGetitem_detail(board.getLostitem_detail());
-        response.setGetitem_url_image(board.getLostitem_url_image());
+        response.setLostitem_name(board.getLostitem_name());
+        response.setLostitem_detail(board.getLostitem_detail());
+        response.setLostitem_url_image(board.getLostitem_url_image());
         return ResponseEntity.ok(response);
     }
 }
