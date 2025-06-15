@@ -25,7 +25,6 @@ public class MemberController {
 
     // API 회원가입 (JSON 요청)
     @PostMapping("/signup")
-    @ResponseBody
     public ResponseEntity<String> signUp(@RequestBody UserSignupDTO dto) {
         try {
             dto.setEmail(dto.getEmail().toLowerCase());

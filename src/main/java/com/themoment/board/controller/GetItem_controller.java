@@ -23,7 +23,7 @@ public class GetItem_controller {
     private GetItem_Repository getItem_repository;
 
     @PostMapping("/post")
-    public void post(@RequestBody GetItemDTO GetItemdto) {
+    public void post(@RequestBody(required = false) GetItemDTO GetItemdto) {
         String token = GetItemdto.getToken();
 
         if (!jwtUtil.validateToken(token)) {

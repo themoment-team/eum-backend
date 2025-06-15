@@ -23,7 +23,7 @@ public class LostItem_controller {
     private LostItem_Repository lostItem_repository;
 
     @PostMapping("/post")
-    public void post(@RequestBody LostItemDTO LostItemdto) {
+    public void post(@RequestBody(required = false) LostItemDTO LostItemdto) {
         String token = LostItemdto.getToken();
 
         if (!jwtUtil.validateToken(token)) {

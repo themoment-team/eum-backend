@@ -12,6 +12,5 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedOrigins("https://eum-frontend.vercel.app") // 프론트 주소들
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*");
-                // .allowCredentials(true);
     }
 }

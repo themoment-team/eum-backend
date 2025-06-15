@@ -24,7 +24,6 @@ public class MemberService {
         user.setStudent_name(dto.getStudent_name());
         user.setEmail(dto.getEmail());
         user.setPassword(dto.getPassword());
-
         userRepository.save(user);
     }
 }
