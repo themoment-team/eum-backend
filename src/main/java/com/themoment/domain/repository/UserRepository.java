@@ -1,6 +1,6 @@
-package com.themoment.login.member.repository;
+package com.themoment.domain.repository;
 
-import com.themoment.login.member.entity.UserEntity;
+import com.themoment.domain.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

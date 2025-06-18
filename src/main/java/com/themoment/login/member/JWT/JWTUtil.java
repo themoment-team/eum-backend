@@ -3,7 +3,7 @@ package com.themoment.login.member.JWT;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.themoment.login.member.entity.UserEntity;
+import com.themoment.domain.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

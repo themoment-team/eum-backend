@@ -1,8 +1,8 @@
 package com.themoment.login.member.service;
 
 import com.themoment.login.member.DTO.UserSignupDTO;
-import com.themoment.login.member.entity.UserEntity;
-import com.themoment.login.member.repository.UserRepository;
+import com.themoment.domain.entity.UserEntity;
+import com.themoment.domain.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 package com.themoment.board.dto.MainPage;
 
-import com.themoment.board.entity.LostItem_Entity;
+import com.themoment.domain.entity.LostItemEntity;
 import lombok.Data;
 
 @Data
@@ -12,7 +12,7 @@ public class LostItemListDTO {
     private String lostitem_detail;
     private String lostitem_url_image;
 
-    public LostItemListDTO(LostItem_Entity e) {
+    public LostItemListDTO(LostItemEntity e) {
         this.boardId = String.valueOf(e.getBoardId());
         this.student_id = String.valueOf(e.getUser().getStudent_id());
         this.student_name = e.getUser().getStudent_name();

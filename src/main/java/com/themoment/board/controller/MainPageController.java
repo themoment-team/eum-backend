@@ -4,10 +4,10 @@ import com.themoment.board.dto.MainPage.CombineItemListDTO;
 import com.themoment.board.dto.MainPage.GetItemListDTO;
 import com.themoment.board.dto.MainPage.ItemListDTO;
 import com.themoment.board.dto.MainPage.LostItemListDTO;
-import com.themoment.board.entity.GetItem_Entity;
-import com.themoment.board.entity.LostItem_Entity;
-import com.themoment.board.repository.GetItem_Repository;
-import com.themoment.board.repository.LostItem_Repository;
+import com.themoment.domain.entity.GetItemEntity;
+import com.themoment.domain.entity.LostItemEntity;
+import com.themoment.domain.repository.GetItemRepository;
+import com.themoment.domain.repository.LostItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -22,9 +22,9 @@ import java.util.stream.Collectors;
 @RestController
 public class MainPageController {
     @Autowired
-    GetItem_Repository getItem_repository;
+    GetItemRepository getItem_repository;
     @Autowired
-    LostItem_Repository lostItem_repository;
+    LostItemRepository lostItem_repository;
 
     @GetMapping("/main")
     public ResponseEntity<?> MainPage() {
@@ -33,8 +33,8 @@ public class MainPageController {
 
         Pageable getitem_pageable = PageRequest.of(0, 50, Sort.by("boardId").descending());
         Pageable lostitem_pageable = PageRequest.of(0, 50, Sort.by("boardId").descending());
-        Page<GetItem_Entity> getItems = getItem_repository.findAll(getitem_pageable);
-        Page<LostItem_Entity> lostItems = lostItem_repository.findAll(lostitem_pageable);
+        Page<GetItemEntity> getItems = getItem_repository.findAll(getitem_pageable);
+        Page<LostItemEntity> lostItems = lostItem_repository.findAll(lostitem_pageable);
 
         List<GetItemListDTO> getItemDTOs = getItems.getContent().stream()
                 .map(GetItemListDTO::new)

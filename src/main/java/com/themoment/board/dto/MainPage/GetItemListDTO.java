@@ -1,6 +1,6 @@
 package com.themoment.board.dto.MainPage;
 
-import com.themoment.board.entity.GetItem_Entity;
+import com.themoment.domain.entity.GetItemEntity;
 import lombok.Data;
 
 @Data
@@ -12,7 +12,7 @@ public class GetItemListDTO {
     private String getitem_detail;
     private String getitem_url_image;
 
-    public GetItemListDTO(GetItem_Entity e) {
+    public GetItemListDTO(GetItemEntity e) {
         this.boardId = String.valueOf(e.getBoardId());
         this.student_id = String.valueOf(e.getUser().getStudent_id());
         this.student_name = e.getUser().getStudent_name();

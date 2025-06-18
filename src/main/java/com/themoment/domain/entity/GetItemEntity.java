@@ -1,4 +1,4 @@
-package com.themoment.board.entity;
+package com.themoment.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "getitem")
-public class GetItem_Entity {
+public class GetItemEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "board_id")
@@ -14,7 +14,7 @@ public class GetItem_Entity {
 
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = false)
-    private User_Entity user;
+    private UserEntity user;
 
     @Column(length = 20, nullable = false)
     private String student_name;
