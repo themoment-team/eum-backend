@@ -25,7 +25,6 @@ public class LostItemService {
         if (!jwtUtil.validateToken(token)) {
             throw new IllegalArgumentException("토큰이 유효하지 않습니다.");
         }
-
         Long student_id = Long.valueOf(jwtUtil.getStudentId(token));
         UserEntity user = UserRepository.findById(student_id)
             .orElseThrow(() -> new IllegalArgumentException("없는 학번입니다."));

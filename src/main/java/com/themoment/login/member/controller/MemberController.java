@@ -1,5 +1,6 @@
 package com.themoment.login.member.controller;
 
+import com.themoment.exception.ExceptionDTO;
 import com.themoment.login.member.DTO.LoginResponseDTO;
 import com.themoment.login.member.DTO.UserLoginDTO;
 import com.themoment.login.member.DTO.UserSignupDTO;
@@ -25,15 +26,15 @@ public class MemberController {
 
     // API 회원가입 (JSON 요청)
     @PostMapping("/signup")
-    public ResponseEntity<String> signUp(@RequestBody UserSignupDTO dto) {
+    public ResponseEntity<?> signUp(@RequestBody UserSignupDTO dto) {
         try {
             dto.setEmail(dto.getEmail().toLowerCase());
             memberService.signup(dto);
-            return ResponseEntity.status(201).body("회원가입 성공");
+            return ResponseEntity.status(201).body(new ExceptionDTO("회원가입 성공!"));
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+            return ResponseEntity.status(402).body(new ExceptionDTO(e.getMessage()));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("서버 오류: " + e.getMessage());
+            return ResponseEntity.status(500).body(new ExceptionDTO(e.getMessage()));
         }
     }
 
@@ -48,13 +49,13 @@ public class MemberController {
 
             if (user.getPassword().equals(dto.getPassword())) {
                 String token = jwtUtil.generateToken(user); // JWT 발급
-                LoginResponseDTO responseDTO = new LoginResponseDTO(token, user.getStudent_name());
-                return ResponseEntity.ok().body(responseDTO);
+                LoginResponseDTO responseDTO = new LoginResponseDTO("로그인 성공!",token, user.getStudent_name());
+                return ResponseEntity.status(200).body(responseDTO);
             } else {
-                return ResponseEntity.status(401).body("비밀번호가 일치하지 않습니다.");
+                return ResponseEntity.status(403).body(new ExceptionDTO("비밀번호가 올바르지 않습니다."));
             }
         } else {
-            return ResponseEntity.status(404).body("존재하지 않는 이메일입니다.");
+            return ResponseEntity.status(404).body(new ExceptionDTO("존재하지 않는 이메일입니다."));
         }
     }
 }
